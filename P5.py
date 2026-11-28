@@ -1,10 +1,32 @@
-y1 = int(input("Enter starting year : "))
-y2 = int(input("Enter ending year : "))
+class Publisher:                 
+    def __init__(self, name):    
+        self.name = name
+    def display(self):                  
+        print("Publisher Name:", self.name)
+class Book(Publisher):
+    def __init__(self, name, title, author):
+        super().__init__(name)
+        self.title = title
+        self.author = author
+    def display(self):
+        super().display() 
+        print("Title:", self.title)
+        print("Author:", self.author)
+class Python(Book):
+    def __init__(self, name, title, author, price, no_of_pages):
+        super().__init__(name, title, author) 
+        self.price = price 
+        self.no_of_pages = no_of_pages
+    def display(self):
+        super().display() 
+        print("Price: Rs.", self.price)
+        print("Number of Pages:", self.no_of_pages)
 
-if y1>y2:
-    print("End year must be geater than or equal to start year")
-else:
-     print(f"Leap years from {y1} to {y2}")
-     for year in range(y1, y2+1):
-         if(year % 4==0 and year%100!=0)or(year%400==0):
-             print(year)
+publisher_name = input("Enter the publisher's name: ")
+book_title = input("Enter the book's title: ")
+book_author = input("Enter the book's author: ")
+book_price = float(input("Enter the price of the book: "))
+book_pages = int(input("Enter the number of pages: "))
+bk = Python(publisher_name, book_title, book_author, book_price, book_pages) 
+print("\n--- Book Details ---")
+bk.display()
